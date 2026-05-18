@@ -433,7 +433,7 @@ namespace PudinKiller.VFXTextureLab
             using (new EditorGUILayout.VerticalScope(sectionStyle))
             {
                 EditorGUILayout.LabelField("VFX Texture Lab", headerStyle);
-                EditorGUILayout.LabelField("Batch texture utility for VFX masks, packed channels, grayscale-to-color ramps, value pushing, threshold cleanup, and small Substance-style edits inside Unity.", smallMutedStyle);
+                EditorGUILayout.LabelField("Batch texture utility for VFX masks, packed channels, grayscale-to-color ramps, contrast, threshold cleanup, and small Substance-style edits inside Unity.", smallMutedStyle);
 
                 showTips = EditorGUILayout.Foldout(showTips, new GUIContent("Common recipes", "Quick reminders for common VFX texture workflows."), true);
                 if (showTips)
@@ -542,7 +542,7 @@ namespace PudinKiller.VFXTextureLab
 
                 if (settings.operations.Count == 0)
                 {
-                    EditorGUILayout.HelpBox("No operations yet. Add Gradient Mapper, Invert, Levels, Value Push, Channel Pack, etc.", MessageType.Warning);
+                    EditorGUILayout.HelpBox("No operations yet. Add Gradient Mapper, Invert, Levels, Contrast, Channel Pack, etc.", MessageType.Warning);
                 }
 
                 for (int i = 0; i < settings.operations.Count; i++)
