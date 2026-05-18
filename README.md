@@ -24,14 +24,16 @@ A Unity 6+ editor tool for VFX artists to batch-edit grayscale masks, contrast, 
 - Erode
 - Data Linear / Color sRGB output modes
 
-## Installation
+## Installation:
+1. Download Source code (zip).
+2. Unzip it somewhere.
+3. In Unity: Window > Package Manager > + > Add package from disk
+4. Select: VFXTextureLab/package.json
 
-In Unity:
+OR (If you have Git installed)
 
-1. Open `Window > Package Manager`
-2. Click `+`
-3. Choose `Install package from git URL`
-4. Paste: https://github.com/PudinKiller/VFXTextureLab.git
+1. In Unity: Window > Package Manager > + > Add package from git URL
+2. Put https://github.com/PudinKiller/VFXTextureLab.git
 
 ## Usage
 
