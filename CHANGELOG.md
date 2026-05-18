@@ -1,18 +1,9 @@
 # Changelog
 
-## 0.1.0
+## 0.1.1
 
-Initial public release.
+### Fixed
 
-### Added
-
-- VFX Texture Lab editor window
-- Batch input texture processing
-- Original/result preview
-- Contrast / Origin Push operation
-- Gradient Mapper with Unity Gradient, RGBA Curves, and HSV Curves
-- Invert, Levels, Threshold, Posterize, Colorize
-- Channel Pack, Auto Normalize
-- Blur, Dilate, Erode
-- Data Linear and Color sRGB output modes
-- PNG and EXR output
+- Added missing Unity `.meta` files for UPM package import.
+- Fixed immutable package folder warning.
+- Changed UI naming: value push -> contrast.

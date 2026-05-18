@@ -1,7 +1,7 @@
 {
   "name": "com.pudinkiller.vfx-texture-lab",
   "displayName": "PudinKiller VFX Texture Lab",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "unity": "6000.0",
   "description": "A Unity editor tool for VFX artists to batch-edit grayscale masks, contrast, gradients, packed channels, thresholds, and stylized texture ramps.",
   "keywords": [
