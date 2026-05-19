@@ -251,12 +251,6 @@ namespace PudinKiller.VFXTextureLab
         public bool copyWrapModeFromSource = true;
     }
 
-    [CreateAssetMenu(fileName = "VFXTextureLabPreset", menuName = "Moshui/VFX/Texture Lab Preset")]
-    public class VFXTextureLabPreset : ScriptableObject
-    {
-        public VFXTextureLabSettings settings = new VFXTextureLabSettings();
-    }
-
     public class VFXTextureLabWindow : EditorWindow
     {
         [SerializeField] private List<Texture2D> inputTextures = new List<Texture2D>();
@@ -286,7 +280,7 @@ namespace PudinKiller.VFXTextureLab
         private int draggingCurveSlot = -1;
         private int draggingCurveKeyIndex = -1;
 
-        [MenuItem("Tools/PudinKiller/VFX Texture Lab")]
+        [MenuItem("Tools/VFX Texture Lab")]
         public static void ShowWindow()
         {
             VFXTextureLabWindow window = GetWindow<VFXTextureLabWindow>();
