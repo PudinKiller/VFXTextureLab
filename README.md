@@ -87,7 +87,7 @@ https://github.com/PudinKiller/VFXTextureLab.git
 To install a specific version:
 
 ```text
-https://github.com/PudinKiller/VFXTextureLab.git#v0.1.1
+https://github.com/PudinKiller/VFXTextureLab.git#v0.1.2
 ```
 
 <details>
@@ -124,7 +124,7 @@ If a `.tgz` package is provided in Releases:
 Open the tool from:
 
 ```text
-Tools > Pudin Killer > VFX Texture Lab
+Tools > VFX Texture Lab
 ```
 
 Basic workflow:
@@ -479,8 +479,9 @@ VFXTextureLab/
   CHANGELOG.md
   LICENSE.md
   Editor/
-    PudinKiller.VFXTextureLab.Editor.asmdef
+    VFXTextureLab.Editor.asmdef
     VFXTextureLab.cs
+    VFXTextureLabPreset.cs
   Documentation~/
   Samples~/
   .github/

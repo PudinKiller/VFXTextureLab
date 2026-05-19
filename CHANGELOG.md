@@ -1,9 +1,9 @@
 # Changelog
 
-## 0.1.1
+## 0.1.2
 
 ### Fixed
 
-- Added missing Unity `.meta` files for UPM package import.
-- Fixed immutable package folder warning.
-- Changed UI naming: value push -> contrast.
+- Fixed preset ScriptableObject assignment.
+- Improved README with GIF demos.
+- Cleaned user-facing branding and namespace/assembly naming.

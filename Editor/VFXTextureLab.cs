@@ -262,7 +262,7 @@ namespace PudinKiller.VFXTextureLab
         [SerializeField] private int previewIndex = -1;
         [SerializeField] private bool showInput = true;
         [SerializeField] private bool showOutput = true;
-        [SerializeField] private bool showPreview = true;
+        // [SerializeField] private bool showPreview = true;
         [SerializeField] private bool showPreviewControls = false;
         [SerializeField] private bool showTips = true;
 

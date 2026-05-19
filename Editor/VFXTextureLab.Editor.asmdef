@@ -1,6 +1,6 @@
 {
-  "name": "PudinKiller.VFXTextureLab.Editor",
-  "rootNamespace": "PudinKiller.VFXTextureLab",
+  "name": "VFXTextureLab.Editor",
+  "rootNamespace": "VFXTextureLab",
   "references": [],
   "includePlatforms": [
     "Editor"
