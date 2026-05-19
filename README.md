@@ -12,17 +12,6 @@ Made by [PudinKiller](https://github.com/PudinKiller).
 
 ---
 
-## Why this exists
-
-VFX artists often need small texture edits while working inside Unity: pushing mask contrast, remapping grayscale textures into colorful ramps, packing channels, cleaning thresholds, or expanding and shrinking masks.
-
-Opening Substance Designer, Photoshop, or another DCC tool can slow down iteration, especially when dealing with many small VFX textures.
-
-**VFX Texture Lab is not trying to replace Substance Designer.**  
-It is a lightweight Unity editor utility for the quick edits that happen all the time during VFX production.
-
----
-
 ## Feature Demos
 
 <table>
@@ -48,6 +37,17 @@ It is a lightweight Unity editor utility for the quick edits that happen all the
 <img src=".github/readme/Workflow.gif" alt="VFX Texture Lab workflow demo" width="900">
 
 </details>
+
+---
+
+## Why this exists
+
+VFX artists often need small texture edits while working inside Unity: pushing mask contrast, remapping grayscale textures into colorful ramps, packing channels, cleaning thresholds, or expanding and shrinking masks.
+
+Opening Substance Designer, Photoshop, or another DCC tool can slow down iteration, especially when dealing with many small VFX textures.
+
+**VFX Texture Lab is not trying to replace Substance Designer.**  
+It is a lightweight Unity editor utility for the quick edits that happen all the time during VFX production.
 
 ---
 
@@ -82,12 +82,6 @@ In Unity:
 
 ```text
 https://github.com/PudinKiller/VFXTextureLab.git
-```
-
-To install a specific version:
-
-```text
-https://github.com/PudinKiller/VFXTextureLab.git#v0.1.2
 ```
 
 <details>
@@ -143,7 +137,7 @@ Basic workflow:
 
 ## Common Workflows
 
-<details open>
+<details>
 <summary><b>Clean up a grayscale mask</b></summary>
 
 Recommended stack:
@@ -379,7 +373,7 @@ Useful for tightening masks, removing small bright noise, and cleaning edges.
 
 ## Troubleshooting
 
-<details open>
+<details>
 <summary><b>My grayscale texture gets purple or green artifacts</b></summary>
 
 Enable:
@@ -428,9 +422,7 @@ For masks and data textures, use `Data Linear`.
 ## Limitations
 
 - Processing is CPU-based, so very large textures or big batches can be slow.
-- PNG output is 8-bit and can show banding in smooth gradients.
-- Use EXR for high precision or HDR-style data.
-- Overwrite mode is destructive. Use version control or duplicate important textures first.
+- PNG output is 8-bit and can show banding in smooth gradients. Use EXR for high precision or HDR-style data.
 - The curve editor is designed for quick editing. Unity's built-in curve fields are still available for more precise curve editing.
 
 ---
@@ -454,19 +446,12 @@ Possible future improvements:
 
 Bug reports, feature ideas, and workflow suggestions are welcome.
 
-When reporting an issue, please include:
-
-- Unity version
-- Operating system
-- Tool version
-- Texture format
-- Texture import settings
-- Steps to reproduce the issue
-- Screenshots or GIFs if possible
-
 ---
 
 ## Development
+
+<details>
+<summary><b>Development Information</b></summary>
 
 This repository is structured as a Unity Package Manager package.
 
@@ -498,6 +483,8 @@ Window > Package Manager > + > Add package from disk
 ```
 
 Then select this repository's `package.json`.
+
+</details>
 
 ---
 
