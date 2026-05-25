@@ -8,7 +8,7 @@ A free and open-source Unity 6+ editor tool for VFX artists to batch-edit textur
 
 Use it for fast mask cleanup, contrast pushing, gradient mapping, channel packing, thresholding, blur, posterize, dilation, erosion, and other common VFX texture tasks.
 
-Made by [PudinKiller](https://github.com/PudinKiller).
+Made by [Ken Deng / PudinKiller](https://github.com/PudinKiller).
 
 ---
 
