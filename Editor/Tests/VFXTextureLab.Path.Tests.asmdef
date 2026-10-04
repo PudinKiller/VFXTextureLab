@@ -1,0 +1,8 @@
+{
+  "name": "VFXTextureLab.Path.Tests",
+  "rootNamespace": "PudinKiller.VFXTextureLab.Tests",
+  "references": ["VFXTextureLab.Editor"],
+  "includePlatforms": ["Editor"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "autoReferenced": false
+}

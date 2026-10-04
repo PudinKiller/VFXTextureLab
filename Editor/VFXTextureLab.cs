@@ -1580,14 +1580,11 @@ namespace PudinKiller.VFXTextureLab
 
         private static bool ValidateOutputFolder(string folder)
         {
-            if (string.IsNullOrWhiteSpace(folder)) return false;
-            folder = folder.Replace('\\', '/');
-            return folder == "Assets" || folder.StartsWith("Assets/", StringComparison.Ordinal);
+            return TryResolveAssetPath(folder, out _);
         }
 
         private static void EnsureAssetFolder(string folder)
         {
-            folder = folder.Replace('\\', '/').TrimEnd('/');
             string absolutePath = AssetPathToAbsolutePath(folder);
             if (!Directory.Exists(absolutePath))
             {
@@ -1598,16 +1595,60 @@ namespace PudinKiller.VFXTextureLab
 
         private static string AssetPathToAbsolutePath(string assetPath)
         {
-            assetPath = assetPath.Replace('\\', '/');
-            if (assetPath == "Assets") return Application.dataPath;
-            if (!assetPath.StartsWith("Assets/", StringComparison.Ordinal))
+            if (!TryResolveAssetPath(assetPath, out string absolutePath))
                 throw new ArgumentException("Path must be inside Assets: " + assetPath);
 
-            return Path.Combine(Application.dataPath, assetPath.Substring("Assets/".Length));
+            return absolutePath;
+        }
+
+        private static bool TryResolveAssetPath(string assetPath, out string absolutePath)
+        {
+            absolutePath = null;
+            if (string.IsNullOrWhiteSpace(assetPath)) return false;
+
+            assetPath = assetPath.Replace('\\', '/').TrimEnd('/');
+            if (assetPath != "Assets" && !assetPath.StartsWith("Assets/", StringComparison.Ordinal)) return false;
+
+            string relativePath = assetPath == "Assets" ? string.Empty : assetPath.Substring("Assets/".Length);
+            bool isWindows = Path.DirectorySeparatorChar == '\\';
+            try
+            {
+                if (Path.IsPathRooted(relativePath)) return false;
+                foreach (string segment in relativePath.Split('/'))
+                {
+                    if (segment == ".." || segment.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0) return false;
+                    // Win32 can reinterpret trailing dots/spaces and drive or stream syntax.
+                    if (isWindows && segment != "." && (segment.EndsWith(".", StringComparison.Ordinal) || segment.EndsWith(" ", StringComparison.Ordinal))) return false;
+                }
+
+                string root = Path.GetFullPath(Application.dataPath).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                string resolved = Path.GetFullPath(Path.Combine(root, relativePath));
+                StringComparison comparison = isWindows ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
+                if (!string.Equals(resolved, root, comparison) && !resolved.StartsWith(root + Path.DirectorySeparatorChar, comparison)) return false;
+
+                // Existing links or junctions below Assets can redirect an otherwise contained path.
+                for (string current = resolved; !string.Equals(current, root, comparison); current = Path.GetDirectoryName(current))
+                {
+                    try
+                    {
+                        if ((File.GetAttributes(current) & FileAttributes.ReparsePoint) != 0) return false;
+                    }
+                    catch (FileNotFoundException) { }
+                    catch (DirectoryNotFoundException) { }
+                }
+
+                absolutePath = resolved;
+                return true;
+            }
+            catch (ArgumentException) { return false; }
+            catch (NotSupportedException) { return false; }
+            catch (IOException) { return false; }
+            catch (UnauthorizedAccessException) { return false; }
         }
 
         private static void WriteTexture(Texture2D texture, string assetPath, VFXOutputFormat format)
         {
+            string absolutePath = AssetPathToAbsolutePath(assetPath);
             byte[] bytes;
             if (format == VFXOutputFormat.EXRFloat)
             {
@@ -1630,7 +1671,7 @@ namespace PudinKiller.VFXTextureLab
                 DestroyImmediate(pngTexture);
             }
 
-            File.WriteAllBytes(AssetPathToAbsolutePath(assetPath), bytes);
+            File.WriteAllBytes(absolutePath, bytes);
         }
 
         private void ApplyImporterSettings(Texture2D source, string outputPath, int sourceWidth, int sourceHeight)
